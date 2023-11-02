@@ -12,7 +12,7 @@
 <?import javafx.geometry.Insets?>
 <BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxproject.HelloController">
     <top>
-        <GridPane alignment="CENTER" hgap="10.0" prefHeight="110.0" prefWidth="292.0" style="-fx-border-color: green;" vgap="10.0" BorderPane.alignment="TOP_LEFT">
+        <GridPane alignment="CENTER" hgap="10.0" prefHeight="110.0" prefWidth="292.0" style="-fx-border-color: green;" vgap="5.0" BorderPane.alignment="TOP_LEFT">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
