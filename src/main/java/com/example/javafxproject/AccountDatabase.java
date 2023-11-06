@@ -104,19 +104,21 @@ public class AccountDatabase {
     }
 
     // Sort accounts by account type and profile
-    public void printSorted() {
+    public String printSorted() {
+        StringBuilder output = new StringBuilder();
         if(numAcct==0){
-            System.out.println("Account Database is empty!");
+            output.append("Account Database is empty!\n");
         }
         else {
             // Sort the accounts using bubble sort
-            System.out.println("\n*Accounts sorted by account type and profile.");
+            output.append("\n*Accounts sorted by account type and profile.\n");
             bubbleSort();
             for (int i = 0; i < numAcct; i++) {
-                System.out.println(accounts[i].toString());
+                output.append(accounts[i].toString()+"\n");
             }
-            System.out.println("*end of list.\n");
+            output.append("*end of list.\n");
         }
+        return output.toString();
     }
     private void bubbleSort(){
         for (int i = 0; i < numAcct - 1; i++) {
@@ -134,13 +136,14 @@ public class AccountDatabase {
 
 
     // Calculate interests and fees
-    public void printFeesAndInterests() {
+    public String printFeesAndInterests() {
+        StringBuilder output = new StringBuilder();
         if(numAcct==0){
-            System.out.println("Account Database is empty!");
+            output.append("Account Database is empty!\n");
         }
         else {
             bubbleSort();
-            System.out.println("\n*list of accounts with fee and monthly interest");
+            output.append("\n*list of accounts with fee and monthly interest\n");
             for (int i = 0; i < numAcct; i++) {
                 Account account = accounts[i];
                 double monthlyInterest = account.monthlyInterest();
@@ -149,23 +152,25 @@ public class AccountDatabase {
                 double monthlyFee = account.monthlyFee();
 
                 // Print the interest and fee for each account
-                System.out.println(accounts[i].toString() +
-                        "::fee " + String.format("$%,.2f", monthlyFee) + "::monthly interest " + formattedInterest);
+                output.append(accounts[i].toString() +
+                        "::fee " + String.format("$%,.2f", monthlyFee) + "::monthly interest " + formattedInterest+ "\n");
 
             }
-            System.out.println("*end of list\n");
+            output.append("*end of list\n");
         }
+        return output.toString();
     }
 
 
     // Apply interests and fees to update balances
-    public void printUpdatedBalances() {
+    public String printUpdatedBalances() {
+        StringBuilder output = new StringBuilder();
         if(numAcct==0){
-            System.out.println("Account database is empty!");
+            output.append("Account Database is empty!\n");
         }
         else {
             bubbleSort();
-            System.out.println("*list of accounts with fees and interests applied.\n");
+            output.append("*list of accounts with fees and interests applied.\n");
             for (int i = 0; i < numAcct; i++) {
                 Account account = accounts[i];
                 double monthlyInterest = account.monthlyInterest();
@@ -179,10 +184,11 @@ public class AccountDatabase {
                 }
 
                 // Print the updated balance for each account
-                System.out.println(accounts[i].toString());
+                output.append(accounts[i].toString()+"\n");
             }
-            System.out.println("*end of list\n");
+            output.append("*end of list\n");
         }
+        return output.toString();
     }
 
     public double getBalance(Account account) {

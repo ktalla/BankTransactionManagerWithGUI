@@ -212,7 +212,7 @@
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
                     </padding>
 
-                    <Button fx:id ="printAccounts" text = "Print All Accounts" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
+                    <Button fx:id ="printAccounts" text = "Print All Accounts"  onAction="#handlePrintAccountsClick" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
                     <Button fx:id ="openFile" text = "Load Accounts from File"  onAction= "#importFile" GridPane.rowIndex="20" GridPane.columnIndex="3"/>
                     <Button fx:id ="printInterestAndFees" text = "Print Interest and Fees" onAction="#handleInterestAndFeesClick" GridPane.rowIndex="20" GridPane.columnIndex="7"/>
                     <Button fx:id ="update" text = "Update Accounts with Interest and Fees" onAction="#handleUpdateAccountsClick" GridPane.rowIndex="20" GridPane.columnIndex="9"/>

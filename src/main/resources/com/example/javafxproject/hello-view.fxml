@@ -81,8 +81,8 @@
                     <CheckBox fx:id= "thirdButtonBox" text="loyalty" GridPane.rowIndex="10" GridPane.columnIndex="3" disable="true"/>
 
                     <Button fx:id ="openButton" text = "Open"  onAction="#handleOpenClick" GridPane.rowIndex="20" GridPane.columnIndex="1"/>
-                    <Button fx:id ="clearButton1" text = "Clear" onAction="#handleClearClick" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
-                    <TextArea fx:id ="outputArea" GridPane.rowIndex="30" GridPane.columnIndex="30" editable="false"> </TextArea>
+                    <Button fx:id ="clearButton1" text = "Clear" onAction="#handleClearClick" GridPane.rowIndex="20" GridPane.columnIndex="3"/>
+                    <TextArea fx:id ="outputArea" GridPane.rowIndex="30" GridPane.columnIndex="2" editable="false" minHeight="200" minWidth="500"> </TextArea>
                 </GridPane>
             </Tab>
             <Tab text="Close">
@@ -132,9 +132,9 @@
                 <RadioButton fx:id="radioButton44" text="Money Market"  toggleGroup="$group1" GridPane.rowIndex="6" GridPane.columnIndex="2">
                 </RadioButton>
 
-                <Button fx:id ="clearButton2" text = "Clear" onAction="#handleClearClick2" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
-                <Button fx:id ="closeButton" text = "Close"  onAction="#handleCloseClick" GridPane.rowIndex="20" GridPane.columnIndex="3"/>
-                    <TextArea fx:id ="outputArea2" GridPane.rowIndex="30" GridPane.columnIndex="30" editable="false"> </TextArea>
+                <Button fx:id ="clearButton2" text = "Clear" onAction="#handleClearClick2" GridPane.rowIndex="20" GridPane.columnIndex="4"/>
+                <Button fx:id ="closeButton" text = "Close"  onAction="#handleCloseClick" GridPane.rowIndex="20" GridPane.columnIndex="2"/>
+                    <TextArea fx:id ="outputArea2" GridPane.rowIndex="30" GridPane.columnIndex="2" editable="false" minHeight="200" minWidth="500"> </TextArea>
                 </GridPane>
             </Tab>
             <Tab text="Deposit/Withdraw">
@@ -166,11 +166,11 @@
                     <Label text="Date of Birth" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
                     <Label text="Amount" GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
 
-                    <TextField fx:id="fname2" GridPane.columnIndex="1" prefWidth="300"/>
-                    <TextField fx:id="lname2" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
-                    <DatePicker fx:id="dob2" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
-                    <TextField fx:id="balance2" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
-                    <Label text="Account Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    <TextField fx:id="fname2" GridPane.columnIndex="1" minWidth="300"/>
+                    <TextField fx:id="lname2" GridPane.columnIndex="1" GridPane.rowIndex="1" minWidth="300"/>
+                    <DatePicker fx:id="dob2" GridPane.columnIndex="1" GridPane.rowIndex="2" minWidth="300"/>
+                    <TextField fx:id="balance2" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="300"/>
+                    <Label text="Account Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="1" minWidth="300"/>
                     <fx:define>
                         <ToggleGroup fx:id="group2" />
                     </fx:define>
@@ -186,14 +186,14 @@
                     <RadioButton fx:id="radioButton444" text="Money Market" toggleGroup="$group2" GridPane.rowIndex="6" GridPane.columnIndex="2">
                     </RadioButton>
 
-                    <Button fx:id ="depositButton" text = "Deposit" onAction="#handleDepositorWithdrawClick" GridPane.rowIndex="20" GridPane.columnIndex="3"/>
-                    <Button fx:id ="withdrawButton" text = "Withdraw" onAction="#handleDepositorWithdrawClick" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
-                    <Button fx:id ="clearButton3" text = "Clear" onAction="#handleClearClick3" GridPane.rowIndex="20" GridPane.columnIndex="7"/>
-                    <TextArea fx:id ="outputArea3" GridPane.rowIndex="30" GridPane.columnIndex="30" editable="false"> </TextArea>
+                    <Button fx:id ="depositButton" text = "Deposit" onAction="#handleDepositorWithdrawClick" GridPane.rowIndex="20" GridPane.columnIndex="1" minWidth="100"/>
+                    <Button fx:id ="withdrawButton" text = "Withdraw" onAction="#handleDepositorWithdrawClick" GridPane.rowIndex="20" GridPane.columnIndex="3" minWidth="100"/>
+                    <Button fx:id ="clearButton3" text = "Clear" onAction="#handleClearClick3" GridPane.rowIndex="20" GridPane.columnIndex="5" minWidth="100"/>
+                    <TextArea fx:id ="outputArea3" GridPane.rowIndex="30" GridPane.columnIndex="1" editable="false" minHeight="200" minWidth="500"> </TextArea>
                 </GridPane>
             </Tab>
             <Tab text="Account Database">
-                <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="1000.0">
+                <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="200.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
@@ -217,11 +217,11 @@
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
                     </padding>
 
-                    <Button fx:id ="printAccounts" text = "Print All Accounts" GridPane.rowIndex="10" GridPane.columnIndex="7" minWidth="250"/>
-                    <Button fx:id ="openFile" text = "Load Accounts from File"  onAction= "#importFile" GridPane.rowIndex="10" GridPane.columnIndex="3" minWidth="250"/>
-                    <Button fx:id ="printInterestAndFees" text = "Print Interest and Fees" onAction="#handleInterestAndFeesClick" GridPane.rowIndex="15" GridPane.columnIndex="7" minWidth="250"/>
-                    <Button fx:id ="update" text = "Update Accounts with Interest and Fees" onAction="#handleUpdateAccountsClick" GridPane.rowIndex="15" GridPane.columnIndex="3" minWidth="250"/>
-                    <TextArea fx:id ="outputArea4" editable="false" minHeight="200" minWidth="200" GridPane.columnIndex="5" GridPane.rowIndex="20"> </TextArea>
+                    <Button fx:id ="printAccounts" text = "Print All Accounts" onAction="#handlePrintAccountsClick" GridPane.rowIndex="2" GridPane.columnIndex="1" minWidth="250"/>
+                    <Button fx:id ="openFile" text = "Load Accounts from File"  onAction= "#importFile" GridPane.rowIndex="4" GridPane.columnIndex="1" minWidth="250"/>
+                    <Button fx:id ="printInterestAndFees" text = "Print Interest and Fees" onAction="#handleInterestAndFeesClick" GridPane.rowIndex="2" GridPane.columnIndex="3" minWidth="250"/>
+                    <Button fx:id ="update" text = "Update Accounts with Interest and Fees" onAction="#handleUpdateAccountsClick" GridPane.rowIndex="4" GridPane.columnIndex="3" minWidth="250"/>
+                    <TextArea fx:id ="outputArea4" editable="false" minHeight="200" minWidth="500" GridPane.columnIndex="2" GridPane.rowIndex="6"> </TextArea>
                 </GridPane>
             </Tab>
         </TabPane>

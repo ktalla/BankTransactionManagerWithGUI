@@ -170,17 +170,18 @@ public class HelloController {
 
     @FXML
     public void handlePrintAccountsClick(ActionEvent event){
-        accountDatabase.printSorted();
+        outputArea4.appendText(accountDatabase.printSorted());
     }
 
     @FXML
     public void handleInterestAndFeesClick(ActionEvent event){
-        accountDatabase.printFeesAndInterests();
+        outputArea4.appendText(accountDatabase.printFeesAndInterests());
     }
 
     @FXML
     public void handleUpdateAccountsClick(ActionEvent event){
-        accountDatabase.printUpdatedBalances();
+
+        outputArea4.appendText(accountDatabase.printUpdatedBalances());
     }
 
     @FXML
@@ -207,6 +208,10 @@ public class HelloController {
                     break;
                 default:
                     accountTypeCode = "";
+            }
+            if(dob.getValue()==null){
+                createAlert("Closing Account Error","There was an error while closing your account.", "Enter a valid date format (mm/dd/yyyy)");
+                return;
             }
             String [] inputData = new String[] {accountTypeCode, fname1.getText(), lname1.getText(), Date.fromStringUI(dob1.getValue().toString())};
             String error = handleCommandC(inputData);
@@ -260,7 +265,6 @@ public class HelloController {
         else{
             RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
             String accountType = selectedRadioButton.getText();
-            //System.out.println(accountType);
                 String accountTypeCode;
                 switch(accountType) {
                     case "Checking":
@@ -278,12 +282,15 @@ public class HelloController {
                     default:
                         accountTypeCode = "";
                 }
+                if(dob.getValue()==null){
+                    createAlert("Opening Account Error","There was an error while creating your account.", "Enter a valid date format (mm/dd/yyyy)");
+                    return;
+                }
                 String [] inputData = new String[] {accountTypeCode, fname.getText(), lname.getText(), Date.fromStringUI(dob.getValue().toString()), initialDeposit.getText(), ""};
                 if(accountTypeCode.equals("CC")){
                     if(campusGroup.getSelectedToggle()!=null) {
                         String campus = ((RadioButton) campusGroup.getSelectedToggle()).getText();
                         inputData[5] = String.valueOf(Campus.fromString(campus).getCode());
-                        //System.out.println(inputData[5]);
                     }
                     else{
                         createAlert("Missing Data", "Missing data for opening an account.", "Please enter missing data required to open an account.");
@@ -326,6 +333,10 @@ public class HelloController {
                     default:
                         accountTypeCode = "";
                 }
+                if(dob.getValue()==null){
+                    createAlert("Deposit/Withdraw Error","There was an error while depositing into or withdrawing from your account.", "Enter a valid date format (mm/dd/yyyy)");
+                    return;
+                }
                 String [] inputData = new String[] {accountTypeCode, fname2.getText(), lname2.getText(), Date.fromStringUI(dob2.getValue().toString()), amount.getText()};
 
                 if (((Button)event.getSource()).getText().equals("Deposit")){
@@ -351,13 +362,11 @@ public class HelloController {
                 return "Missing Data for opening an account."; //other accounts require 6 pieces of information
             } else {
                 String accountType = inputData[0];
-                System.out.print(accountType);
                 Date date = Date.fromString(inputData[3]);
                 double balance = Double.parseDouble(inputData[4]); //check if 0 or negative
                 if (balance <= 0) {
                     return "Initial deposit cannot be 0 or negative.";
                 }
-                //System.out.println(accountType); //why is this not printing?
                 if (!date.isValid()) {
                     return "DOB invalid: " + date + " not a valid calendar date!";
                 }
@@ -374,7 +383,6 @@ public class HelloController {
                 if(accountType.equals("MM") && balance<2000)
                     return "Minimum of $2000 to open a Money Market account.";
                 if(accountType.equals("CC") && date.getAge()>=24) {
-                    System.out.println(date.getAge());
                     return "DOB invalid: " + date + " over 24.";
                 }
                 return "";
@@ -596,18 +604,21 @@ public class HelloController {
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
         Stage stage = new Stage();
-        File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
         try {
+            File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
             Scanner scanner = new Scanner(sourceFile);
             outputArea4.appendText("Accounts loaded");
             while(scanner.hasNextLine()){
                 String input = scanner.nextLine();
-                String[] inputData = input.split("\\s+");
+                String[] inputData = input.split(",+");
                 handleCommandO(inputData);
             }
         }
         catch(FileNotFoundException e){
             createAlert("File Not Found","File not found for opening an account.", "Please select the correct file." );
+        }
+        catch(NullPointerException e){
+
         }
     }
 }
