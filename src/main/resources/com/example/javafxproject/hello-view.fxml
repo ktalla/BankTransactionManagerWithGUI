@@ -24,23 +24,23 @@
             <Tab text="Open">
                 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="200.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <padding>
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
@@ -70,7 +70,7 @@
                     <RadioButton fx:id="radioButton4" text="Money Market" onAction="#handleRadioButtonSelection" toggleGroup="$group" GridPane.rowIndex="6" GridPane.columnIndex="2">
                     </RadioButton>
 
-                    <VBox fx:id="secondButtonBox" spacing="10" GridPane.rowIndex="11" GridPane.columnIndex="2" disable="true">
+                    <VBox fx:id="secondButtonBox" spacing="10" GridPane.rowIndex="6" GridPane.columnIndex="3" disable="true" prefHeight="200" prefWidth="200" fillWidth="false">
                         <fx:define>
                             <ToggleGroup fx:id="campusGroup" />
                         </fx:define>
@@ -78,7 +78,7 @@
                         <RadioButton fx:id = "camden" text="Camden" toggleGroup="$campusGroup"/>
                         <RadioButton fx:id = "newark" text="Newark" toggleGroup="$campusGroup"/>
                     </VBox>
-                    <CheckBox fx:id= "thirdButtonBox" text="loyalty" GridPane.rowIndex="9" GridPane.columnIndex="2" disable="true"/>
+                    <CheckBox fx:id= "thirdButtonBox" text="loyalty" GridPane.rowIndex="10" GridPane.columnIndex="3" disable="true"/>
 
                     <Button fx:id ="openButton" text = "Open"  onAction="#handleOpenClick" GridPane.rowIndex="20" GridPane.columnIndex="1"/>
                     <Button fx:id ="clearButton1" text = "Clear" onAction="#handleClearClick" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
@@ -87,25 +87,25 @@
             </Tab>
             <Tab text="Close">
                 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="200.0">
-                <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
                 <padding>
                     <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
                 </padding>
@@ -140,23 +140,23 @@
             <Tab text="Deposit/Withdraw">
                 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="200.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="500.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <padding>
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
@@ -166,10 +166,10 @@
                     <Label text="Date of Birth" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
                     <Label text="Amount" GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
 
-                    <TextField fx:id="fname2" GridPane.columnIndex="1"/>
-                    <TextField fx:id="lname2" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <DatePicker fx:id="dob2" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <TextField fx:id="balance2" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <TextField fx:id="fname2" GridPane.columnIndex="1" prefWidth="300"/>
+                    <TextField fx:id="lname2" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+                    <DatePicker fx:id="dob2" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
+                    <TextField fx:id="balance2" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
                     <Label text="Account Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
                     <fx:define>
                         <ToggleGroup fx:id="group2" />
@@ -193,35 +193,35 @@
                 </GridPane>
             </Tab>
             <Tab text="Account Database">
-                <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="200.0">
+                <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" prefHeight="200.0" prefWidth="1000.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1000.0"/>
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <padding>
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
                     </padding>
 
-                    <Button fx:id ="printAccounts" text = "Print All Accounts" GridPane.rowIndex="20" GridPane.columnIndex="5"/>
-                    <Button fx:id ="openFile" text = "Load Accounts from File"  onAction= "#importFile" GridPane.rowIndex="20" GridPane.columnIndex="3"/>
-                    <Button fx:id ="printInterestAndFees" text = "Print Interest and Fees" onAction="#handleInterestAndFeesClick" GridPane.rowIndex="20" GridPane.columnIndex="7"/>
-                    <Button fx:id ="update" text = "Update Accounts with Interest and Fees" onAction="#handleUpdateAccountsClick" GridPane.rowIndex="20" GridPane.columnIndex="9"/>
-                    <TextArea fx:id ="outputArea4" GridPane.rowIndex="30" GridPane.columnIndex="30" editable="false"> </TextArea>
+                    <Button fx:id ="printAccounts" text = "Print All Accounts" GridPane.rowIndex="10" GridPane.columnIndex="7" minWidth="250"/>
+                    <Button fx:id ="openFile" text = "Load Accounts from File"  onAction= "#importFile" GridPane.rowIndex="10" GridPane.columnIndex="3" minWidth="250"/>
+                    <Button fx:id ="printInterestAndFees" text = "Print Interest and Fees" onAction="#handleInterestAndFeesClick" GridPane.rowIndex="15" GridPane.columnIndex="7" minWidth="250"/>
+                    <Button fx:id ="update" text = "Update Accounts with Interest and Fees" onAction="#handleUpdateAccountsClick" GridPane.rowIndex="15" GridPane.columnIndex="3" minWidth="250"/>
+                    <TextArea fx:id ="outputArea4" editable="false" minHeight="200" minWidth="200" GridPane.columnIndex="5" GridPane.rowIndex="20"> </TextArea>
                 </GridPane>
             </Tab>
         </TabPane>

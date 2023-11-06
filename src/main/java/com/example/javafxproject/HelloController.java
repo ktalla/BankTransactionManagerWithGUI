@@ -260,7 +260,7 @@ public class HelloController {
         else{
             RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
             String accountType = selectedRadioButton.getText();
-            System.out.println(accountType);
+            //System.out.println(accountType);
                 String accountTypeCode;
                 switch(accountType) {
                     case "Checking":
@@ -283,6 +283,7 @@ public class HelloController {
                     if(campusGroup.getSelectedToggle()!=null) {
                         String campus = ((RadioButton) campusGroup.getSelectedToggle()).getText();
                         inputData[5] = String.valueOf(Campus.fromString(campus).getCode());
+                        //System.out.println(inputData[5]);
                     }
                     else{
                         createAlert("Missing Data", "Missing data for opening an account.", "Please enter missing data required to open an account.");
@@ -350,6 +351,7 @@ public class HelloController {
                 return "Missing Data for opening an account."; //other accounts require 6 pieces of information
             } else {
                 String accountType = inputData[0];
+                System.out.print(accountType);
                 Date date = Date.fromString(inputData[3]);
                 double balance = Double.parseDouble(inputData[4]); //check if 0 or negative
                 if (balance <= 0) {
@@ -371,8 +373,10 @@ public class HelloController {
                     return "Invalid loyalty code.";
                 if(accountType.equals("MM") && balance<2000)
                     return "Minimum of $2000 to open a Money Market account.";
-                if(accountType.equals("CC") && date.getAge()<24)
+                if(accountType.equals("CC") && date.getAge()>=24) {
+                    System.out.println(date.getAge());
                     return "DOB invalid: " + date + " over 24.";
+                }
                 return "";
             }
         } catch (NumberFormatException e) {
@@ -585,7 +589,6 @@ public class HelloController {
         }
         return error;
     }
-
     @FXML
     void importFile(ActionEvent event) {
         FileChooser chooser = new FileChooser();
