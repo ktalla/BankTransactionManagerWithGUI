@@ -113,7 +113,6 @@ public class HelloController {
 
     @FXML
     private TextField initialDeposit;
-
     @FXML
     private TextField amount;
     private AccountDatabase accountDatabase;
@@ -356,10 +355,10 @@ public class HelloController {
 
     private String inputCheckForO(String[] inputData) {
         try {
-            if ((inputData[0].equals("CC") || inputData[0].equals("S")) && inputData.length < 6) { //CollegeChecking and Savings requires 7 pieces of information
+            if ((inputData[0].equals("CC") || inputData[0].equals("S")) && inputData.length < 6) { //CollegeChecking and Savings requires 6 pieces of information
                 return "Missing Data for opening an account.";
             } else if (inputData.length < 5) {
-                return "Missing Data for opening an account."; //other accounts require 6 pieces of information
+                return "Missing Data for opening an account."; //other accounts require 5 pieces of information
             } else {
                 String accountType = inputData[0];
                 Date date = Date.fromString(inputData[3]);
@@ -484,13 +483,13 @@ public class HelloController {
             if (accountDatabase.contains(account)) {
                 double currentBalance = accountDatabase.getBalance(account); // Assuming you have a method to get the account balance
                 if (withdrawalAmount > currentBalance) {
-                    outputArea3.appendText(profile.toString() + "(" + accountType + ") Withdraw - insufficient funds.");
+                    outputArea3.appendText(profile.toString() + "(" + accountType + ") Withdraw - insufficient funds.\n");
                 } else {
                     accountDatabase.withdraw(account);
-                    outputArea3.appendText(profile.toString() + "(" + accountType + ") Withdraw - balance updated.");
+                    outputArea3.appendText(profile.toString() + "(" + accountType + ") Withdraw - balance updated.\n");
                 }
             } else {
-                outputArea3.appendText(profile.toString() + "(" + accountType + ") is not in the database.");
+                outputArea3.appendText(profile.toString() + "(" + accountType + ") is not in the database.\n");
             }
         }
         return error;
@@ -513,10 +512,10 @@ public class HelloController {
 
     private String inputCheckForD(String[] inputData){
         try {
-            if (inputData.length < 4) {
+            if (inputData.length < 5) {
                 return "Missing data for depositing into account.";
             }
-            double amount = Double.parseDouble(inputData[5]);
+            double amount = Double.parseDouble(inputData[4]);
             if (amount <= 0) {
                 return "Deposit - amount cannot be 0 or negative.";
             }
@@ -529,10 +528,10 @@ public class HelloController {
 
     private String inputCheckForW(String[] inputData){
         try {
-            if (inputData.length < 4) {
+            if (inputData.length < 5) {
                 return "Missing data for withdrawing from an account.";
             }
-            double amount = Double.parseDouble(inputData[5]);
+            double amount = Double.parseDouble(inputData[4]);
             if (amount <= 0) {
                 return "Withdraw - amount cannot be 0 or negative.";
             }
@@ -545,16 +544,16 @@ public class HelloController {
     private String handleCommandD(String[] inputData) {
         String error = inputCheckForD(inputData);
         if(error.isEmpty()){
-            String accountType = inputData[1];
-            Date dob = Date.fromString(inputData[4]);
-            Profile profile = new Profile(inputData[2], inputData[3], dob);
-            double amount = Double.parseDouble(inputData[5]);
+            String accountType = inputData[0];
+            Date dob = Date.fromString(inputData[3]);
+            Profile profile = new Profile(inputData[1], inputData[2], dob);
+            double amount = Double.parseDouble(inputData[4]);
             Account account = createDummyAccount(accountType, profile, amount);
             if (accountDatabase.contains(account)) {
                 accountDatabase.deposit(account);
-                outputArea3.appendText(profile.toString()+"(" + accountType + ") Deposit - balance updated.");
+                outputArea3.appendText(profile.toString()+"(" + accountType + ") Deposit - balance updated.\n");
             } else {
-                outputArea3.appendText(profile.toString() + "(" + accountType + ") is not in the database.");
+                outputArea3.appendText(profile.toString() + "(" + accountType + ") is not in the database.\n");
             }
         }
         return error;
@@ -607,7 +606,7 @@ public class HelloController {
         try {
             File sourceFile = chooser.showOpenDialog(stage); //get the reference of the source file
             Scanner scanner = new Scanner(sourceFile);
-            outputArea4.appendText("Accounts loaded");
+            outputArea4.appendText("Accounts loaded\n");
             while(scanner.hasNextLine()){
                 String input = scanner.nextLine();
                 String[] inputData = input.split(",+");

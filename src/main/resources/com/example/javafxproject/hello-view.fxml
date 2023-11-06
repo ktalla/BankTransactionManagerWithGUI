@@ -169,7 +169,7 @@
                     <TextField fx:id="fname2" GridPane.columnIndex="1" minWidth="300"/>
                     <TextField fx:id="lname2" GridPane.columnIndex="1" GridPane.rowIndex="1" minWidth="300"/>
                     <DatePicker fx:id="dob2" GridPane.columnIndex="1" GridPane.rowIndex="2" minWidth="300"/>
-                    <TextField fx:id="balance2" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="300"/>
+                    <TextField fx:id="amount" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="300"/>
                     <Label text="Account Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="1" minWidth="300"/>
                     <fx:define>
                         <ToggleGroup fx:id="group2" />
