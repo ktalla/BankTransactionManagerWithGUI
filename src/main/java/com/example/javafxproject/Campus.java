@@ -26,14 +26,12 @@ public enum Campus {
     }
 
     public static Campus fromString(String campusName) {
-        for (Campus campus : values()) {
-            if(campusName.equals("New Brunswick")){
+            if(campusName.equals("New Brunswick"))
                 return NEW_BRUNSWICK;
-            }
-            else if (campus.name().equalsIgnoreCase(campusName)) { //check this
-                return campus;
-            }
-        }
-        return UNKNOWN;
+            if(campusName.equals("Camden"))
+                return CAMDEN;
+            if(campusName.equals("Newark"))
+                return NEWARK;
+            return UNKNOWN;
     }
 }
