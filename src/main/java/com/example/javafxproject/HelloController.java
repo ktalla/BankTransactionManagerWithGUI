@@ -1,122 +1,108 @@
 package com.example.javafxproject;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/** Backend that handles the user's inputs and controls
+ * @author Keerthana Talla
+ * @author Ishani Mhatre
+ */
+
 public class HelloController {
-    @FXML
-    private RadioButton radioButton1;
 
-    @FXML
-    private RadioButton radioButton2;
-
-    @FXML
-    private RadioButton radioButton3;
-
-    @FXML
-    private RadioButton radioButton4;
-
-    @FXML
-    private RadioButton radioButton11;
-
-    @FXML
-    private RadioButton radioButton22;
-
-    @FXML
-    private RadioButton radioButton33;
-
-    @FXML
-    private RadioButton radioButton44;
-
-    @FXML
-    private RadioButton radioButton111;
-
-    @FXML
-    private RadioButton radioButton222;
-
-    @FXML
-    private RadioButton radioButton333;
-
-    @FXML
-    private RadioButton radioButton444;
-
-    @FXML
-    private RadioButton nb;
-
-    @FXML
-    private RadioButton camden;
-
-    @FXML
-    private RadioButton newark;
-
+    //input fields open
     @FXML
     private TextField fname;
-
     @FXML
     private TextField lname;
-
     @FXML
     private DatePicker dob;
-
     @FXML
-    private TextField fname1;
-
-    @FXML
-    private TextField lname1;
-
-    @FXML
-    private DatePicker dob1;
-
-    @FXML
-    private TextField fname2;
-
-    @FXML
-    private TextField lname2;
-
-    @FXML
-    private DatePicker dob2;
-    @FXML
-    private ToggleGroup toggleGroup1;
-    @FXML
-    private ToggleGroup toggleGroup2;
-
-    @FXML
-    private VBox secondButtonBox;
-
-    @FXML
-    private CheckBox thirdButtonBox;
-
+    private TextField initialDeposit; //amount to deposit when opening an account
     @FXML
     private ToggleGroup toggleGroup;
-
+    @FXML
+    private RadioButton radioButton1;
+    @FXML
+    private RadioButton radioButton2;
+    @FXML
+    private RadioButton radioButton3;
+    @FXML
+    private RadioButton radioButton4;
     @FXML
     private ToggleGroup campusGroup;
     @FXML
-    private TextArea outputArea;
+    private VBox secondButtonBox;
+    @FXML
+    private RadioButton nb;
+    @FXML
+    private RadioButton camden;
+    @FXML
+    private RadioButton newark;
+    @FXML
+    private CheckBox thirdButtonBox; //Loyalty parameter for Savings account
+
+    //input fields for close
+    @FXML
+    private TextField fname1;
+    @FXML
+    private TextField lname1;
+    @FXML
+    private DatePicker dob1;
+    @FXML
+    private ToggleGroup toggleGroup1;
+    @FXML
+    private RadioButton radioButton11;
+    @FXML
+    private RadioButton radioButton22;
+    @FXML
+    private RadioButton radioButton33;
+    @FXML
+    private RadioButton radioButton44;
+
+    //input fields for deposit/withdraw
+    @FXML
+    private ToggleGroup toggleGroup2;
+    @FXML
+    private RadioButton radioButton111;
+    @FXML
+    private RadioButton radioButton222;
+    @FXML
+    private RadioButton radioButton333;
+    @FXML
+    private RadioButton radioButton444;
+    @FXML
+    private TextField fname2;
+    @FXML
+    private TextField lname2;
+    @FXML
+    private DatePicker dob2;
+    @FXML
+    private TextField amount; //amount to withdraw or deposit
+
 
     @FXML
-    private TextArea outputArea2;
+    private TextArea outputArea; //output to open tab
 
     @FXML
-    private TextArea outputArea3;
+    private TextArea outputArea2; //output to close tab
 
     @FXML
-    private TextArea outputArea4;
+    private TextArea outputArea3; //output to deposit/withdraw tab
 
     @FXML
-    private TextField initialDeposit;
-    @FXML
-    private TextField amount;
+    private TextArea outputArea4; //output to Account Database tab
     private AccountDatabase accountDatabase;
 
+    /**
+     * Executes after FXML components are loaded and establishes single-select feature
+     */
     @FXML
     public void initialize() {
         accountDatabase = new AccountDatabase();
@@ -144,6 +130,10 @@ public class HelloController {
         radioButton444.setToggleGroup(toggleGroup2);
     }
 
+    /**
+     * Enables campus selection or loyalty selection based on what radiobutton is clicked
+     * @param event User clicking on a radio button in open tab
+     */
     @FXML
     public void handleRadioButtonSelection(ActionEvent event) {
         if (toggleGroup.getSelectedToggle() == null || toggleGroup.getSelectedToggle() == radioButton1 || toggleGroup.getSelectedToggle() == radioButton4) {
@@ -167,29 +157,45 @@ public class HelloController {
         }
     }
 
+    /**
+     * Prints all accounts to output box
+     * @param event User clicks the "print all accounts" button
+     */
     @FXML
     public void handlePrintAccountsClick(ActionEvent event){
         outputArea4.appendText(accountDatabase.printSorted());
     }
 
+    /**
+     * Prints all accounts with interest and fees to output box
+     * @param event User clicks the "print accounts with interest and fees" button
+     */
     @FXML
     public void handleInterestAndFeesClick(ActionEvent event){
         outputArea4.appendText(accountDatabase.printFeesAndInterests());
     }
 
+    /**
+     *Prints all accounts with updated interest and fees
+     * @param event User clicks the "Update accounts with interest and fees" button
+     */
     @FXML
     public void handleUpdateAccountsClick(ActionEvent event){
 
         outputArea4.appendText(accountDatabase.printUpdatedBalances());
     }
 
+    /**
+     * Checks for missing data. If all inputs are filled, information is put into an array and sent to be checked for validity. If errors arise, this method sends an alert.
+     * @param event User clicks on the close button in the close tab
+     */
     @FXML
     public void handleCloseClick(ActionEvent event){
         if(fname1.getText().isEmpty() || lname1.getText().isEmpty() || dob1.toString().isEmpty() || toggleGroup1.getSelectedToggle() ==null){
             createAlert("Missing Data", "Missing data for closing an account.", "Please enter missing data required to close an account.");
         }
         else {
-            RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+            RadioButton selectedRadioButton = (RadioButton) toggleGroup1.getSelectedToggle();
             String accountType = selectedRadioButton.getText();
             String accountTypeCode;
             switch(accountType) {
@@ -220,6 +226,10 @@ public class HelloController {
         }
     }
 
+    /**
+     * Clears all data in the open tab
+     * @param event User clicks the clear button
+     */
     @FXML
     public void handleClearClick(ActionEvent event){
         fname.clear();
@@ -232,6 +242,11 @@ public class HelloController {
         thirdButtonBox.setSelected(false);
         thirdButtonBox.setDisable(true);
     }
+
+    /**
+     * Clears all data in the close tab
+     * @param event User clicks clear in the close tab
+     */
     @FXML
     public void handleClearClick2(ActionEvent event){
         fname1.clear();
@@ -240,6 +255,10 @@ public class HelloController {
         toggleGroup1.selectToggle(null);
     }
 
+    /**
+     * Clears all data in the deposit/withdraw tab
+     * @param event User clicks clear in the deposit/withdraw tab
+     */
     @FXML
     public void handleClearClick3(ActionEvent event){
         fname2.clear();
@@ -249,6 +268,12 @@ public class HelloController {
         toggleGroup2.selectToggle(null);
     }
 
+    /**
+     * Creates and shows an alert given alert parameters
+     * @param title Title for alert
+     * @param header Header for alert
+     * @param content Content for alert
+     */
     private void createAlert(String title, String header, String content){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -256,6 +281,11 @@ public class HelloController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    /**
+     * Checks for missing data. If all inputs are filled, information is put into an array and sent to be checked for validity. If errors arise, this method sends an alert.
+     * @param event User clicks on the open button in the open tab
+     */
     @FXML
     private void handleOpenClick(ActionEvent event){
         if(fname.getText().isEmpty() || lname.getText().isEmpty() || dob.toString().isEmpty() || toggleGroup.getSelectedToggle() ==null || initialDeposit.getText().isEmpty()){
@@ -308,12 +338,17 @@ public class HelloController {
                 }
             }
         }
-        @FXML
-        private void handleDepositorWithdrawClick(ActionEvent event) {
+
+    /**
+     * Checks for missing data. If all inputs are filled, information is put into an array and sent to be checked for validity. If errors arise, this method sends an alert.
+     * @param event User clicks on the deposit or withdraw button in the deposit/withdraw tab
+     */
+    @FXML
+    private void handleDepositorWithdrawClick(ActionEvent event) {
             if (fname2.getText().isEmpty() || lname2.getText().isEmpty() || dob2.toString().isEmpty() || toggleGroup2.getSelectedToggle() == null || amount.getText().isEmpty()) {
                 createAlert("Missing Data", "Missing data for account deposit or withdrawal.", "Please enter missing data required to deposit into or withdraw from an account.");
             } else {
-                RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+                RadioButton selectedRadioButton = (RadioButton) toggleGroup2.getSelectedToggle();
                 String accountType = selectedRadioButton.getText();
                 String accountTypeCode;
                 switch (accountType) {
@@ -353,6 +388,11 @@ public class HelloController {
             }
         }
 
+    /**
+     * Checks if all inputs for opening an account are valid
+     * @param inputData String array with all inputs for opening an account
+     * @return String with error if input is invalid or empty String if all inputs are valid
+     */
     private String inputCheckForO(String[] inputData) {
         try {
             if ((inputData[0].equals("CC") || inputData[0].equals("S")) && inputData.length < 6) { //CollegeChecking and Savings requires 6 pieces of information
@@ -391,7 +431,12 @@ public class HelloController {
         }
     }
 
-
+    /**
+     * Method to open new checking account. Checks if account exists already. If not, opens checking account
+     * @param profile Profile containing user's first name, last name, and date of birth
+     * @param balance amount to initially deposit in the account
+     * @return String describing if opening an account was successful or not
+     */
     private String openCheckingAccount(Profile profile, double balance) {
         Checking checkingAcc = new Checking(profile, balance);
         Account account = createDummyAccount("CC", profile, 0);
@@ -402,6 +447,14 @@ public class HelloController {
         }
     }
 
+    /**
+     * Method to open new college checking account. Checks if account exists already. If not, opens college checking account
+     * @param profile Profile containing user's first name, last name, and date of birth
+     * @param balance amount to initially deposit in the account
+     * @param campusCode code to identify campus
+     * @param dob date of birth
+     * @return String describing if opening account was successful or not
+     */
     private String openCCAccount(Profile profile, double balance, int campusCode, Date dob) {
         if (dob.getAge() < 24) {
             Campus campus = Campus.fromCode(campusCode);
@@ -417,6 +470,12 @@ public class HelloController {
         }
     }
 
+    /**
+     * Method to open new savings account. Checks if account exists already. If not, opens savings account
+     * @param profile Profile containing user's first name, last name, and date of birth
+     * @param balance amount to initially deposit in the account
+     * @return String describing if opening account was successful or not
+     */
     private String openSavingsAccount(Profile profile, double balance, int loyaltyCode) {
         boolean loyalty; //try catch here
         if (loyaltyCode == 1) {
@@ -432,6 +491,12 @@ public class HelloController {
         }
     }
 
+    /**
+     * Method to open new money market account. Checks if account exists already. If not, opens money market account
+     * @param profile Profile containing user's first name, last name, and date of birth
+     * @param balance amount to initially deposit in the account
+     * @return String describing if opening account was successful or not
+     */
     private String openMMAccount(Profile profile, double balance) {
         if (balance >= 2000) {
             MoneyMarket moneyMarket = new MoneyMarket(profile, balance, 0);
@@ -445,6 +510,11 @@ public class HelloController {
         }
     }
 
+    /**
+     * If there are no errors with inputted data, opens the specified account
+     * @param inputData String array with inputs needed to open an account
+     * @return String describing error if there is one, else returns an empty String
+     */
     private String handleCommandO(String[] inputData) {
         String error = inputCheckForO(inputData);
         if (error.isEmpty()) {
@@ -472,6 +542,11 @@ public class HelloController {
         return error;
     }
 
+    /**
+     * If there are no errors with inputted data, attempts to withdraw funds and outputs if it was able to or not.
+     * @param inputData String array with inputted data to withdraw from an account
+     * @return String error if there is invalid data given, else returns an empty String
+     */
     private String handleCommandW(String[] inputData) {
         String error = inputCheckForW(inputData);
         if(error.isEmpty()) {
@@ -495,6 +570,13 @@ public class HelloController {
         return error;
     }
 
+    /**
+     * Creates a dummy account to assist finding an account and with inheritance logic
+     * @param accountType Type of account
+     * @param profile Profile containing user's first name, last name, and date of birth
+     * @param amount amount they would like to deposit or withdraw
+     * @return
+     */
     private Account createDummyAccount(String accountType, Profile profile, double amount) {
         switch (accountType) {
             case "C":
@@ -510,6 +592,11 @@ public class HelloController {
         }
     }
 
+    /**
+     * Checks if enough inputs are given and if amount for depositing into an account is valid
+     * @param inputData String array with all inputs for opening an account
+     * @return String with error if input is invalid or empty String if input is valid
+     */
     private String inputCheckForD(String[] inputData){
         try {
             if (inputData.length < 5) {
@@ -526,6 +613,11 @@ public class HelloController {
         return "";
     }
 
+    /**
+     * Checks if enough inputs are given and if amount for withdrawing from an account is valid
+     * @param inputData String array with all inputs for withdrawing from an account
+     * @return String with error if input is invalid or empty String if input is valid
+     */
     private String inputCheckForW(String[] inputData){
         try {
             if (inputData.length < 5) {
@@ -541,6 +633,12 @@ public class HelloController {
         }
         return "";
     }
+
+    /**
+     * If there are no errors with inputted data, attempts to deposit funds and outputs if it was able to or not.
+     * @param inputData String array with inputted data to deposit into an account
+     * @return String error if there is invalid data given, else returns an empty String
+     */
     private String handleCommandD(String[] inputData) {
         String error = inputCheckForD(inputData);
         if(error.isEmpty()){
@@ -559,6 +657,11 @@ public class HelloController {
         return error;
         }
 
+    /**
+     * Checks if enough inputs are given and if inputs are valid for closing an account
+     * @param inputData String array with all inputs for closing an account
+     * @return String with error if inputs are invalid or empty String if inputs are valid
+     */
     private String inputCheckForC(String [] inputData){
             if (inputData.length < 4) {
                 return ("Missing data for closing an account.");
@@ -577,6 +680,11 @@ public class HelloController {
             return "";
     }
 
+    /**
+     * If there are no errors with inputted data, attempts to close account and outputs if it was able to or not.
+     * @param inputData String array with inputted data to close an account
+     * @return String error if there is invalid data given, else returns an empty String
+     */
     private String handleCommandC(String[] inputData) {
         String error = inputCheckForC(inputData);
         if(error.isEmpty())
@@ -596,6 +704,11 @@ public class HelloController {
         }
         return error;
     }
+
+    /**
+     * Loads accounts from file given by user and opens them. Sends an alert if file is not found.
+     * @param event User clicks on load accounts from file button
+     */
     @FXML
     void importFile(ActionEvent event) {
         FileChooser chooser = new FileChooser();
