@@ -2,8 +2,8 @@ package com.example.javafxproject;
 
 public enum Campus {
     NEW_BRUNSWICK(0),
-    NEWARK(1),
-    CAMDEN(2),
+    NEWARK(2),
+    CAMDEN(1),
     UNKNOWN(-1); // Default for invalid codes
 
     private final int code;
